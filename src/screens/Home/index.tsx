@@ -13,12 +13,12 @@ type task = {
 }
 
 export default function Home() {
-    const emptyListTitle = 'Você ainda não tem tarefas cadastradas'
-    const emptyListDescription = 'Crie tarefas e organize seus itens a fazer'
+    const emptyListTitle = 'Você ainda não tem tarefas cadastradas';
+    const emptyListDescription = 'Crie tarefas e organize seus itens a fazer';
 
     const [id, setId] = useState(0);
     const [name, setName] = useState('');
-    const [tasks, setTasks] = useState<task[]>([])
+    const [tasks, setTasks] = useState<task[]>([]);
 
     const addTask = (name: string) => {
         if (name.trim() === '') {
@@ -26,7 +26,7 @@ export default function Home() {
         }
 
         if (tasks.map(task => task.name.toLowerCase()).includes(name.toLowerCase())) {
-            return Alert.alert("Tarefa existente", "Já existe uma tarefa com esse nome!")
+            return Alert.alert("Tarefa existente", "Já existe uma tarefa com esse nome!");
         }
 
         const task: any = {
@@ -36,7 +36,7 @@ export default function Home() {
         }
 
         setTasks(prevState => [...prevState, task]);
-        setId(id + 1)
+        setId(id + 1);
         setName('');
 
     }
@@ -47,9 +47,9 @@ export default function Home() {
 
     const markTask = (item: task) => {
         if (!item.checked) {
-            setTasks(prevState => prevState.map(task => (task.id === item.id ? { id: item.id, name: item.name, checked: true } : task)))
+            setTasks(prevState => prevState.map(task => (task.id === item.id ? { id: item.id, name: item.name, checked: true } : task)));
         } else {
-            setTasks(prevState => prevState.map(task => (task.id === item.id ? { id: item.id, name: item.name, checked: false } : task)))
+            setTasks(prevState => prevState.map(task => (task.id === item.id ? { id: item.id, name: item.name, checked: false } : task)));
         }
     }
 
